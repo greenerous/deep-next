@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../redux/reducers/userReducer.ts';
+
 import tableStyles from '../common/styles/table.module.css';
 
 export default function Join() {
@@ -12,6 +15,7 @@ export default function Join() {
     birth: '',
     address: '',
   });
+  const dispatch = useDispatch();
 
   //render 부분의 함수 정의
   const handleChange = (e) => {
@@ -25,6 +29,8 @@ export default function Join() {
       onSubmit={(e) => {
         e.preventDefault();
         alert(' 진행 1: 회원가입 클릭 ');
+        dispatch(userActions.joinRequest(user));
+
         setUser({
           userid: '',
           password: '',
