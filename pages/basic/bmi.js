@@ -11,8 +11,12 @@ export default function Bmi() {
   const proxy = 'http://localhost:5000';
 
   //handleSubmit 정의하기
+  //e : event 의 약자
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //request가 서버로 전달됨
     axios
       .post(proxy + '/api/basic/bmi', inputs)
       .then((res) => {
@@ -30,6 +34,7 @@ export default function Bmi() {
   //handleChange 정의하기
   const handleChange = (e) => {
     e.preventDefault();
+    //e.target 이 response에 달려서 전달됨.
     const { value, name } = e.target;
     setInputs({ ...inputs, [name]: value });
   };
